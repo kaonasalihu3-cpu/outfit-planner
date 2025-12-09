@@ -1,12 +1,10 @@
-// src/context/AuthContext.js
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null); // { name, email }
+  const [user, setUser] = useState(null);
 
-  // Load saved user
   useEffect(() => {
     const saved = localStorage.getItem("mb_user");
     if (saved) {

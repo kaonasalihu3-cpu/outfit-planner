@@ -35,7 +35,7 @@ body {
   color: var(--text);
 }
 
-/* Global layout */
+
 
 .app {
   min-height: 100vh;
@@ -93,7 +93,7 @@ body {
   opacity: 1;
 }
 
-/* Navbar */
+
 
 .navbar {
   position: sticky;
@@ -160,7 +160,7 @@ body {
   border-color: rgba(246, 95, 184, 0.5);
 }
 
-/* Hero */
+
 
 .hero {
   display: grid;
@@ -208,14 +208,14 @@ body {
   flex-wrap: wrap;
 }
 
-/* Hero visual */
+
 
 .hero-image-block {
   position: relative;
   min-height: 260px;
   border-radius: 26px;
   overflow: hidden;
-  background-image: url("https://images.pexels.com/photos/3738348/pexels-photo-3738348.jpeg");
+  background-image: url("https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&h=600&fit=crop");
   background-size: cover;
   background-position: center;
   box-shadow: var(--shadow-soft);
@@ -247,7 +247,7 @@ body {
   font-weight: 600;
 }
 
-/* Buttons */
+
 
 .btn {
   border-radius: var(--radius-pill);
@@ -300,7 +300,7 @@ body {
   color: #fff;
 }
 
-/* Products grid */
+
 
 .product-grid {
   display: grid;
@@ -388,7 +388,7 @@ body {
   color: #ffe68a;
 }
 
-/* Filters */
+
 
 .filters {
   display: flex;
@@ -422,7 +422,7 @@ body {
   font-size: 0.9rem;
 }
 
-/* Product details */
+
 
 .product-details {
   display: grid;
@@ -505,7 +505,7 @@ body {
   color: #fff;
 }
 
-/* About & contact */
+
 
 .about-page p {
   line-height: 1.6;
@@ -569,7 +569,7 @@ body {
   color: #d8ffe5;
 }
 
-/* Footer */
+
 
 .footer {
   border-top: 1px solid rgba(255, 255, 255, 0.03);
@@ -589,7 +589,7 @@ body {
   font-size: 0.78rem;
 }
 
-/* Animations & responsive */
+
 
 @keyframes fadeIn {
   from {
@@ -651,6 +651,6 @@ body {
   }
 
   .nav-links {
-    display: none; /* for super simple mobile, could later add burger */
+    display: none;
   }
 }

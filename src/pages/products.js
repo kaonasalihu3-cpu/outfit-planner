@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { products } from "../data/products.js";
-import ProductCard from "../components/productCard.js";
+import ProductCard from "../components/ProductCard.js";
 
 function Products() {
   const [category, setCategory] = useState("All");
