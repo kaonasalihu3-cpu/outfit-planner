@@ -10,6 +10,7 @@ function Register() {
     email: "",
     password: "",
     confirm: "",
+    role: "user",
   });
   const [error, setError] = useState("");
 
@@ -24,7 +25,7 @@ function Register() {
       return;
     }
 
-    register(form.name, form.email, form.password);
+    register(form.name, form.email, form.password, form.role);
     navigate("/"); // or navigate("/login")
   }
 
@@ -86,6 +87,32 @@ function Register() {
               onChange={handleChange}
               placeholder="••••••••"
             />
+          </div>
+
+          <div className="form-group">
+            <label>Account type *</label>
+            <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
+              <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                <input
+                  type="radio"
+                  name="role"
+                  value="user"
+                  checked={form.role === "user"}
+                  onChange={handleChange}
+                />
+                User
+              </label>
+              <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                <input
+                  type="radio"
+                  name="role"
+                  value="admin"
+                  checked={form.role === "admin"}
+                  onChange={handleChange}
+                />
+                Admin
+              </label>
+            </div>
           </div>
 
           <button type="submit" className="btn btn-primary">

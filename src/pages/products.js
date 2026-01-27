@@ -1,16 +1,34 @@
-import { useState } from "react";
-import { products } from "../data/products.js";
+import { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard.js";
 
 function Products() {
+  const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("All");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const categories = ["All", "Face", "Eyes", "Lips", "Cheeks"];
+
+  useEffect(() => {
+    fetch("http://localhost/my-make-up-brand/backend/api/prodcts.php")
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError("Failed to load products");
+        setLoading(false);
+      });
+  }, []);
 
   const filtered =
     category === "All"
       ? products
       : products.filter((p) => p.category === category);
+
+  if (loading) return <div className="page"><p>Loading products...</p></div>;
+  if (error) return <div className="page"><p>{error}</p></div>;
 
   return (
     <div className="page products-page">
@@ -48,3 +66,4 @@ function Products() {
 }
 
 export default Products;
+

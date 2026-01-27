@@ -1,9 +1,25 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { products } from "../data/products.js";
 
 function ProductDetails() {
   const { id } = useParams();
-  const product = products.find((p) => p.id === id);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost/my-make-up-brand/backend/api/prodcts.php")
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to load products:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  const product = products.find((p) => p.id == id);
 
   if (!product) {
     return (

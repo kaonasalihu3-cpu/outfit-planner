@@ -1,8 +1,24 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { products } from "../data/products.js";
 import ProductCard from "../components/ProductCard.js";
 
 function Home() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost/my-make-up-brand/backend/api/prodcts.php")
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to load products:", err);
+        setLoading(false);
+      });
+  }, []);
+
   const featured = products.slice(0, 3);
 
   return (

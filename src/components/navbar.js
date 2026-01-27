@@ -40,6 +40,16 @@ function Navbar() {
               <span className="nav-link" style={{ opacity: 0.9 }}>
                 Hi, {user.name?.split(" ")[0]}
               </span>
+              {user.role === 'admin' && (
+                <a
+                  href="http://localhost/my-make-up-brand/backend/admin/dashbord.php"
+                  className="nav-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Admin
+                </a>
+              )}
               <button
                 type="button"
                 className="nav-link"

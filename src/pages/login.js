@@ -12,13 +12,16 @@ function Login() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const res = login(form.email, form.password);
-    if (res.ok) {
-      navigate("/"); // go home after login
+    setError("");
+
+    const result = await login(form.email, form.password);
+
+    if (result.ok) {
+      navigate("/");
     } else {
-      setError(res.message);
+      setError(result.message);
     }
   }
 
