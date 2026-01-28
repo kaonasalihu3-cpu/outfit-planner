@@ -87,5 +87,7 @@ INSERT INTO content (page, section, title, content) VALUES
 
 -- Insert sample content for Contact page
 INSERT INTO content (page, section, title, content) VALUES
-('contact', 'hero', 'Get In Touch', 'Have questions about our products or need beauty advice? We\'d love to hear from you!'),
-('contact', 'info', 'Contact Information', 'Email: hello@glowbeauty.com\nPhone: (555) 123-4567\nAddress: 123 Beauty Street, Glamour City, GC 12345');
+('contact', 'hero', 'Get In Touch', 'Have questions about our products or need beauty advice? We''d love to hear from you!'),
+('contact', 'info', 'Contact Information', 'Email: hello@glowbeauty.com
+Phone: (555) 123-4567
+Address: 123 Beauty Street, Glamour City, GC 12345');

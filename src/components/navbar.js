@@ -19,6 +19,9 @@ function Navbar() {
           <NavLink to="/products" className="nav-link">
             Products
           </NavLink>
+          <NavLink to="/news" className="nav-link">
+            News
+          </NavLink>
           <NavLink to="/about" className="nav-link">
             About
           </NavLink>
@@ -41,14 +44,9 @@ function Navbar() {
                 Hi, {user.name?.split(" ")[0]}
               </span>
               {user.role === 'admin' && (
-                <a
-                  href="http://localhost/my-make-up-brand/backend/admin/dashbord.php"
-                  className="nav-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link to="/admin/dashboard" className="nav-link">
                   Admin
-                </a>
+                </Link>
               )}
               <button
                 type="button"

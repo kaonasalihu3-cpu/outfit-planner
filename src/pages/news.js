@@ -5,6 +5,8 @@ export default function News() {
 
   useEffect(() => {
     fetch("http://localhost/my-make-up-brand/backend/api/news.php")
+    fetch("http://my-make-up-brand.test/backend/api/products.php")
+
       .then(res => res.json())
       .then(setNews);
   }, []);

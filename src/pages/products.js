@@ -10,7 +10,7 @@ function Products() {
   const categories = ["All", "Face", "Eyes", "Lips", "Cheeks"];
 
   useEffect(() => {
-    fetch("http://localhost/my-make-up-brand/backend/api/prodcts.php")
+    fetch("http://localhost/my-make-up-brand/backend/api/products.php")
       .then(res => res.json())
       .then(data => {
         setProducts(data);

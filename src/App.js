@@ -7,8 +7,10 @@ import Products from "./pages/products";
 import ProductDetails from "./pages/productDetails";
 import About from "./pages/about";
 import Contact from "./pages/contact";
+import News from "./pages/news";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import Dashboard from "./pages/dashboard";
 
 import { AuthProvider } from "./context/AuthContext";
 
@@ -24,8 +26,10 @@ function App() {
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/news" element={<News />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
           </Routes>
         </main>
         <Footer />

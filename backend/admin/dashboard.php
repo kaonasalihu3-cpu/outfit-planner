@@ -241,7 +241,7 @@ $messages = $messageController->getAll();
 
             if (productId) {
                 // Load product data
-                fetch(`../api/prodcts.php?id=${productId}`)
+                fetch(`../api/products.php?id=${productId}`)
                     .then(res => res.json())
                     .then(data => {
                         document.getElementById('product-id').value = data.id;
@@ -321,7 +321,7 @@ $messages = $messageController->getAll();
             const data = Object.fromEntries(formData);
 
             const method = data.id ? 'PUT' : 'POST';
-            const url = data.id ? `../api/prodcts.php?id=${data.id}` : '../api/prodcts.php';
+            const url = data.id ? `../api/products.php?id=${data.id}` : '../api/products.php';
 
             fetch(url, {
                 method: method,
