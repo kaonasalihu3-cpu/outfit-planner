@@ -1,69 +1,49 @@
-import { useState, useEffect } from "react";
-import ProductCard from "../components/ProductCard.js";
+import { useEffect, useState } from "react";
+import ProductCard from "../components/ProductCard";
 
 function Products() {
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState("All");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const categories = ["All", "Face", "Eyes", "Lips", "Cheeks"];
-
   useEffect(() => {
-    fetch("http://localhost/my-make-up-brand/backend/api/products.php")
-      .then(res => res.json())
-      .then(data => {
+    fetch("http://localhost/backend/api/products.php")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch products");
+        }
+        return res.json();
+      })
+      .then((data) => {
         setProducts(data);
         setLoading(false);
       })
-      .catch(err => {
-        setError("Failed to load products");
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
         setLoading(false);
       });
   }, []);
 
-  const filtered =
-    category === "All"
-      ? products
-      : products.filter((p) => p.category === category);
+  if (loading) {
+    return <p style={{ padding: 40 }}>Loading products...</p>;
+  }
 
-  if (loading) return <div className="page"><p>Loading products...</p></div>;
-  if (error) return <div className="page"><p>{error}</p></div>;
+  if (error) {
+    return <p style={{ padding: 40, color: "red" }}>{error}</p>;
+  }
 
   return (
     <div className="page products-page">
-      <section className="section">
-        <div className="section-header">
-          <h1>All products</h1>
-          <p>Find your perfect match by category.</p>
-        </div>
+      <h1 style={{ padding: "20px 40px" }}>All Products</h1>
 
-        <div className="filters">
-          {categories.map((c) => (
-            <button
-              key={c}
-              className={`filter-chip ${
-                c === category ? "filter-chip-active" : ""
-              }`}
-              onClick={() => setCategory(c)}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-
-        <div className="product-grid">
-          {filtered.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-          {filtered.length === 0 && (
-            <p className="empty-state">No products found in this category.</p>
-          )}
-        </div>
-      </section>
+      <div className="product-grid">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 }
 
 export default Products;
-
